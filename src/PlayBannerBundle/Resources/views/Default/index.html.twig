@@ -1,0 +1,67 @@
+<div class="animatedButton">
+    <div id="playBannerProgress">
+    </div>
+
+    <div id="playBannerProgress_background">
+    </div>
+</div>
+
+<div
+    style="z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    justify-content: center;
+    display: flex;">
+    
+    <div
+        style="
+        position: absolute;
+        width: 180px;
+        height: 30px;">
+
+        {{ include('@PlayBanner/playBanner/iconImage/captions.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/currentTime.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/duration.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/playPause.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/totalScreen.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/volume.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/speed.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/filter.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/replay.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/next.html.twig') }}
+        {{ include('@PlayBanner/playBanner/iconImage/previous.html.twig') }}
+    
+    </div>
+    
+</div>
+        
+        
+<script>
+    
+    var playBannerProgress_background = document.getElementById("playBannerProgress_background");
+    
+    $('#playBannerProgress')
+    .click(function (e) {
+        moveVideo(e);
+    });
+    
+    $('#playBannerProgress_background')
+    .click(function (e) {
+        moveVideo(e);
+    });
+    
+    function moveVideo(e)
+    {
+        var v = document.getElementById("my_video");
+        
+        var windowSize = $(window).width(); // 100%
+        var xPosition = e.clientX; // x%
+        
+        var videoDuration = parseInt(v.duration); // 100 time
+        var currentTime = videoDuration * xPosition / windowSize; // x time (ESTE ES EL VALOR QUE DEBEMOS AVERIGUAR)
+        
+        v.currentTime = currentTime;        
+    }
+    
+</script>

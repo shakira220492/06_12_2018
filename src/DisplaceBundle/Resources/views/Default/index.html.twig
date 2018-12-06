@@ -1,0 +1,147 @@
+<script>
+        document.addEventListener("mousemove", transitionDisplace, false);
+        document.addEventListener("mousemove", delizeElements, false);
+        displaceIconWrapper.addEventListener("mousedown", activateElement, false);
+        displaceIconWrapper.addEventListener("mouseup", desactivateElement, false);
+        displaceIconWrapper.addEventListener("mouseover", desactivateElement, false);
+        icon.addEventListener("mouseover", desactivateElement, false);
+        displaceIconWrapper.addEventListener("mouseover", prepareIcon, false);
+
+        var buttonActivate = "0";
+
+        function prepareIcon()
+        {
+            icon.style.transitionProperty = "all";
+            icon.style.transitionDuration = "0s";
+        }
+
+        function activateElement()
+        {
+            buttonActivate = "1";
+
+            document.getElementById("presentationArea").style.transitionDuration = "0s";
+            document.getElementById("playBanner").style.transitionDuration = "0s";
+
+            document.getElementById("configurationBar").style.transitionDuration = "0s";
+            document.getElementById('configurationArea').style.transitionDuration = "0s";
+            document.getElementById('sessionArea').style.transitionDuration = "0s";
+            {#document.getElementById('videoInformation').style.transitionDuration = "0s";#}
+
+            document.getElementById('searchBar').style.transitionDuration = "0s";
+
+            document.getElementById("rowRightIcon").style.opacity = 0.4;
+            document.getElementById('rowLeftIcon').style.opacity = 0.4;
+            
+            document.getElementById("rowRightIcon").style.zIndex = 7;
+            document.getElementById('rowLeftIcon').style.zIndex = 7;
+        }
+
+        function desactivateElement(e)
+        {
+            buttonActivate = "0";
+
+            var referenceLocation = document.getElementById("displaceIcon").style.right;
+
+            displaceIconWrapper.style.top = "120px";
+            displaceIconWrapper.style.bottom = ($(window).height() - 150) + "px";
+
+            displaceIconWrapper.style.left = $(window).width() - (parseInt(referenceLocation) + 30) + "px";
+            displaceIconWrapper.style.right = parseInt(referenceLocation) + "px";
+
+            document.getElementById("rowRightIcon").style.opacity = 0;
+            document.getElementById('rowLeftIcon').style.opacity = 0;
+            
+            document.getElementById("rowRightIcon").style.zIndex = 1;
+            document.getElementById('rowLeftIcon').style.zIndex = 1;
+        }
+
+        function transitionDisplace(e)
+        {
+            if (buttonActivate === "1")
+            {
+                document.getElementById("displaceIcon").style.right = $(window).width() - (e.pageX + 30) + "px";
+
+                displaceIconWrapper.style.left = "0px";
+                displaceIconWrapper.style.right = "0px";
+                displaceIconWrapper.style.top = "0px";
+                displaceIconWrapper.style.bottom = "0px";
+            }
+        }
+
+        function delizeElements(e)
+        {
+            if (buttonActivate === "0")
+            {
+                //console.log("deslize desactivate");
+            } else if (buttonActivate === "1")
+            {
+                console.log("deslize activate");
+                var rightPart = $(window).width() - 540;
+
+                if (e.pageX <= 300)
+                {
+                    {#alert("izquierda... ");#}
+                    document.getElementById("presentationArea").style.right = ($(window).width() - 300) + "px";
+                    {#document.getElementById("playBanner").style.right = ($(window).width() - 300) + "px";#}
+
+                    document.getElementById("configurationArea").style.right = $(window).width() - (510) + "px";
+                    document.getElementById("sessionArea").style.width = $(window).width() - (510 + 180) + "px";
+
+                    document.getElementById("displaceIcon").style.right = ($(window).width() - 330) + "px";
+                    document.getElementById("rowLeftIcon").style.right = ($(window).width() - 300) + "px";
+                    document.getElementById("rowRightIcon").style.right = ($(window).width() - 360) + "px";
+                } else if (e.pageX >= rightPart - 30)
+                {
+                    {#alert("derecha... ");#}
+                    document.getElementById("presentationArea").style.width = (rightPart - 30) + "px";
+                    {#document.getElementById("playBanner").style.width = (rightPart - 30) + "px";#}
+
+                    document.getElementById("configurationArea").style.right = $(window).width() - (rightPart - 60 + 180) + "px";
+                    document.getElementById("sessionArea").style.width = $(window).width() - (rightPart - 60 + 360) + "px";
+
+                    document.getElementById("displaceIcon").style.right = 160 + "px";
+                    document.getElementById("rowLeftIcon").style.right = 160 + "px";
+                    document.getElementById("rowRightIcon").style.right = 160 + "px";
+                } else
+                {
+                    if (size === "1")
+                    {
+                        document.getElementById("configurationArea").style.right = $(window).width() - (e.pageX + 210) + "px";
+                        document.getElementById("sessionArea").style.width = $(window).width() - (e.pageX + 210 + 180) + "px";
+
+                        document.getElementById("configurationBar").style.right = $(window).width() - (e.pageX + 30) + "px";
+
+                        document.getElementById("rowLeftIcon").style.left = e.pageX - 30 + "px";
+                        document.getElementById("rowRightIcon").style.left = e.pageX + 30 + "px";
+                    } else if (size === "2") {
+                        document.getElementById("presentationArea").style.width = e.pageX + 30 + "px";
+                        {#document.getElementById("playBanner").style.width = e.pageX + 30 + "px";#}
+
+                        document.getElementById("configurationArea").style.right = $(window).width() - (e.pageX + 210) + "px";
+                        document.getElementById("sessionArea").style.width = $(window).width() - (e.pageX + 210 + 180) + "px";
+                        
+                        document.getElementById("configurationBar").style.right = $(window).width() - (e.pageX + 30) + "px";
+
+                        document.getElementById("rowLeftIcon").style.left = e.pageX - 30 + "px";
+                        document.getElementById("rowRightIcon").style.left = e.pageX + 30 + "px";
+                    } else if (size === "3") {
+                        document.getElementById("configurationArea").style.right = $(window).width() - (e.pageX + 210) + "px";
+                        document.getElementById("sessionArea").style.width = $(window).width() - (e.pageX + 210 + 180) + "px";
+
+                        document.getElementById("configurationBar").style.right = $(window).width() - (e.pageX + 30) + "px";
+
+                        document.getElementById("rowLeftIcon").style.left = e.pageX - 30 + "px";
+                        document.getElementById("rowRightIcon").style.left = e.pageX + 30 + "px";
+                    } else if (size === "4") {
+                        document.getElementById("configurationArea").style.right = $(window).width() - (e.pageX + 210) + "px";
+                        document.getElementById("sessionArea").style.width = $(window).width() - (e.pageX + 210 + 180) + "px";
+                        
+                        document.getElementById("configurationBar").style.right = $(window).width() - (e.pageX + 30) + "px";
+
+                        document.getElementById("rowLeftIcon").style.left = e.pageX - 30 + "px";
+                        document.getElementById("rowRightIcon").style.left = e.pageX + 30 + "px";
+                    }
+                }
+            }
+        }
+    </script>

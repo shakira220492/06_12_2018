@@ -1,0 +1,170 @@
+<div id="volumeTool">
+
+    <div id='volumeIconButton' class='animatedButton'>
+        <img id='volumeIconButton_image' src="files/images/icons/playBanner/volume.png" alt="Mountain View">
+    </div>
+
+    <div id="volumeBar">
+        <div id="volumeController" class='animatedButton'>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var status = 0;
+
+    var captionsIconButton = document.getElementById("captionsIconButton");
+    var playPauseIconButton = document.getElementById("playPauseIconButton");
+    var qualityIconButton = document.getElementById("qualityIconButton");
+    var speedIconButton = document.getElementById("speedIconButton");
+    var totalScreenIconButton = document.getElementById("totalScreenIconButton");
+    var replayIconButton = document.getElementById("replayIconButton");
+    var videoCurrentTime = document.getElementById("videoCurrentTime");
+    var videoDuration = document.getElementById("videoDuration");
+    
+    $('#volumeTool')
+    .mouseover(function () {
+        setOverStatus();
+    })
+    .mouseout(function () {
+        setOutStatus();
+    })
+    .click(function () {
+        volumeIconFunction();
+    });
+    
+    function setOutStatus()
+    {
+        status = 0;
+    }
+
+    function setOverStatus()
+    {
+        status = 1;
+    }
+
+    document.addEventListener("mousemove", function () {
+        manageVolumeOption();
+    });
+
+    function manageVolumeOption()
+    {
+        if (status == 1)
+        {
+            showVolumeBar();
+        } else if (status == 0)
+        {
+            hideVolumeBar();
+        }
+    }
+
+    function hideVolumeBar()
+    {
+        volumeBar.style.width = "0px";
+        captionsIconButton.style.left = "120px";
+        totalScreenIconButton.style.left = "150px";
+        filterIconButton.style.left = "180px";
+        replayIconButton.style.left = "210px";
+        videoCurrentTime.style.left = "240px";
+        videoDuration.style.left = "280px";
+    }
+
+    function showVolumeBar()
+    {
+        volumeBar.style.width = "100px";
+        captionsIconButton.style.left = "220px";
+        totalScreenIconButton.style.left = "250px";
+        filterIconButton.style.left = "280px";
+        replayIconButton.style.left = "310px";
+        videoCurrentTime.style.left = "340px";
+        videoDuration.style.left = "380px";
+    }
+</script>
+
+<script>
+{#    .draggable({
+        containment: "#volumeBar", scroll: true
+    })#}
+    
+    var estado = 0;
+    $('#volumeController')
+    .mousedown(function () {
+        volumeButtonClickF();
+    });
+
+
+    function volumeButtonClickF() {
+        estado = 1;
+        
+        var volumeController = document.getElementById("volumeController");
+        volumeController.style.left = 0 + "px";
+        
+        document.addEventListener("mousemove", volumeButtonMoveF, false);
+    }
+    
+    function volumeButtonMoveF(e) {
+        var my_video = document.getElementById("my_video");
+        var volumeController = document.getElementById("volumeController");
+        
+        {#var xPosition = e.clientX;#}
+                
+        var xPosition = volumeController.style.left;
+        
+        {#(e.clientX - e.clientX) + más la posicion del volumen, #}
+        
+        
+        
+        if (volume == 0)
+        {
+            volume = 0;
+            valor = 1;
+        } else
+        {
+            volume++;
+            valor = 0;
+        }
+        
+        var int_volumeController_position = parseInt(xPosition) + valor;
+        
+        volumeController.style.left = int_volumeController_position + "px";
+        
+        var volumeValue = 50;
+        if (estado == 0)
+        {
+        } else
+        {
+            if (volumeController.style.left.substring(0, 2) === "0p"
+                    || volumeController.style.left.substring(0, 2) === "1p"
+                    || volumeController.style.left.substring(0, 2) === "2p"
+                    || volumeController.style.left.substring(0, 2) === "3p"
+                    || volumeController.style.left.substring(0, 2) === "4p"
+                    || volumeController.style.left.substring(0, 2) === "5p"
+                    || volumeController.style.left.substring(0, 2) === "6p"
+                    || volumeController.style.left.substring(0, 2) === "7p"
+                    || volumeController.style.left.substring(0, 2) === "8p"
+                    || volumeController.style.left.substring(0, 2) === "9p")
+            {
+                volumeValue = "0" + volumeController.style.left.substring(0, 1);
+            } else
+            {
+                volumeValue = volumeController.style.left.substring(0, 2);
+            }
+
+            {#alert("volumeValue: "+volumeController_position);#}
+
+            my_video.volume = volumeValue / 100;
+        }
+    }
+    
+    function volumeIconFunction()
+    {
+        var my_video = document.getElementById("my_video");
+        
+        if (my_video.muted) {
+            my_video.muted = false;
+        } else {
+            my_video.muted = true;
+        }
+    }
+</script>

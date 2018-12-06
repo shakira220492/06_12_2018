@@ -1,0 +1,229 @@
+<div id='zeroDivIconButton' class='animatedButton'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 90px;
+     z-index: 3;
+     display: block;">
+    <img style='
+         width:30px; 
+         height:30px; 
+         opacity: 0.9;
+         z-index: 1;' 
+         src="files/images/icons/configuration/zeroDiv.png" alt="Mountain View">
+</div>
+
+<script>
+    var zeroDivIconButton = document.getElementById("zeroDivIconButton");
+    zeroDivIconButton.addEventListener("click", showConfigurationArea, false);
+    
+    function showConfigurationArea()
+    {
+        if (ConfigurationAreaSize === "1")
+        {
+            zeroDivArea();
+            
+            ConfigurationAreaSize = "2";
+        } else if (ConfigurationAreaSize === "2")
+        {
+            oneDivArea();
+            
+            ConfigurationAreaSize = "3";
+        } else if (ConfigurationAreaSize === "3")
+        {
+            twoDivArea();
+            
+            ConfigurationAreaSize = "4";
+        } else if (ConfigurationAreaSize === "4")
+        {
+            threeDivArea();
+            
+            ConfigurationAreaSize = "5";
+        } else if (ConfigurationAreaSize === "5")
+        {
+            oneDivArea();
+            
+            ConfigurationAreaSize = "1";
+        }
+    }
+    
+    function draw_presentationArea()
+    {
+        var presentationArea = document.getElementById("presentationArea");
+        presentationArea.style.transitionProperty = "all";
+        presentationArea.style.transitionDuration = "0.4s";
+        if (size === "4")
+        {
+            presentationArea.style.width = $(window).width() - sessionArea_left + "px";
+        }
+        if (size === "5")
+        {
+            presentationArea.style.width = $(window).width() - configurationArea_left + "px";
+        }
+        if (size === "6")
+        {
+            presentationArea.style.width = $(window).width() - sessionArea_left + "px";
+        }
+    }
+    
+    function zeroDivArea()
+    {
+        sessionArea_left = 180;
+        configurationArea_left = 360;
+        
+        if ($(window).width() >= 360)
+        {
+            var sessionArea = document.getElementById("sessionArea");
+            sessionArea.style.transitionProperty = "all";
+            sessionArea.style.transitionDuration = "0.4s";
+            sessionArea.style.width = 0 + "px";
+
+            var configurationArea = document.getElementById("configurationArea");
+            configurationArea.style.transitionProperty = "all";
+            configurationArea.style.transitionDuration = "0.4s";
+            configurationArea.style.right = 180 + "px";
+
+            var configurationBar = document.getElementById("configurationBar");
+            configurationBar.style.transitionProperty = "all";
+            configurationBar.style.transitionDuration = "0.4s";
+            configurationBar.style.right = 360 + "px";
+            
+            draw_presentationArea();
+        
+    {#        var displaceIcon = document.getElementById("displaceIcon");
+            displaceIcon.style.transitionProperty = "all";
+            displaceIcon.style.transitionDuration = "0.4s";
+            displaceIcon.style.right = 360 + "px";#}
+        } else
+        {
+            ConfigurationAreaSize = "1";
+        }
+    }
+    
+    function oneDivArea()
+    {
+{#        if (size === "2")
+        {
+            var presentationArea = document.getElementById("presentationArea");
+            presentationArea.style.transitionProperty = "all";
+            presentationArea.style.transitionDuration = "0.4s";
+            presentationArea.style.width = $(window).width() - 600 + "px";
+        }#}
+        
+        sessionArea_left = 360;
+        configurationArea_left = 540;
+        
+        if ($(window).width() >= 540)
+        {
+            var sessionArea = document.getElementById("sessionArea");
+            sessionArea.style.transitionProperty = "all";
+            sessionArea.style.transitionDuration = "0.4s";
+            sessionArea.style.width = 180 + "px";
+
+            var configurationArea = document.getElementById("configurationArea");
+            configurationArea.style.transitionProperty = "all";
+            configurationArea.style.transitionDuration = "0.4s";
+            configurationArea.style.right = 360 + "px";
+
+            var configurationBar = document.getElementById("configurationBar");
+            configurationBar.style.transitionProperty = "all";
+            configurationBar.style.transitionDuration = "0.4s";
+            configurationBar.style.right = 540 + "px";
+
+            draw_presentationArea();
+
+    {#        var displaceIcon = document.getElementById("displaceIcon");
+            displaceIcon.style.transitionProperty = "all";
+            displaceIcon.style.transitionDuration = "0.4s";
+            displaceIcon.style.right = 780 + "px";#}
+        } else
+        {
+            ConfigurationAreaSize = "1";
+        }
+    }
+    
+    function twoDivArea()
+    {
+{#        if (size === "2")
+        {
+            var presentationArea = document.getElementById("presentationArea");
+            presentationArea.style.transitionProperty = "all";
+            presentationArea.style.transitionDuration = "0.4s";
+            presentationArea.style.width = $(window).width() - 880 + "px";
+        }#}
+        
+        sessionArea_left = 540;
+        configurationArea_left = 720;
+        
+        if ($(window).width() >= 720)
+        {
+            var sessionArea = document.getElementById("sessionArea");
+            sessionArea.style.transitionProperty = "all";
+            sessionArea.style.transitionDuration = "0.4s";
+            sessionArea.style.width = 360 + "px";
+
+            var configurationArea = document.getElementById("configurationArea");
+            configurationArea.style.transitionProperty = "all";
+            configurationArea.style.transitionDuration = "0.4s";
+            configurationArea.style.right = 540 + "px";
+
+            var configurationBar = document.getElementById("configurationBar");
+            configurationBar.style.transitionProperty = "all";
+            configurationBar.style.transitionDuration = "0.4s";
+            configurationBar.style.right = 720 + "px";
+
+            draw_presentationArea();
+
+    {#        var displaceIcon = document.getElementById("displaceIcon");
+            displaceIcon.style.transitionProperty = "all";
+            displaceIcon.style.transitionDuration = "0.4s";
+            displaceIcon.style.right = 1060 + "px";#}
+        } else
+        {
+            ConfigurationAreaSize = "1";
+        }
+    }
+    
+    function threeDivArea()
+    {
+{#        if (size === "2")
+        {
+            var presentationArea = document.getElementById("presentationArea");
+            presentationArea.style.transitionProperty = "all";
+            presentationArea.style.transitionDuration = "0.4s";
+            presentationArea.style.width = $(window).width() - 880 + "px";
+        }#}
+        
+        sessionArea_left = 720;
+        configurationArea_left = 900;
+        
+        if ($(window).width() >= 900)
+        {
+            var sessionArea = document.getElementById("sessionArea");
+            sessionArea.style.transitionProperty = "all";
+            sessionArea.style.transitionDuration = "0.4s";
+            sessionArea.style.width = 540 + "px";
+
+            var configurationArea = document.getElementById("configurationArea");
+            configurationArea.style.transitionProperty = "all";
+            configurationArea.style.transitionDuration = "0.4s";
+            configurationArea.style.right = 720 + "px";
+
+            var configurationBar = document.getElementById("configurationBar");
+            configurationBar.style.transitionProperty = "all";
+            configurationBar.style.transitionDuration = "0.4s";
+            configurationBar.style.right = 900 + "px";
+
+            draw_presentationArea();
+
+    {#        var displaceIcon = document.getElementById("displaceIcon");
+            displaceIcon.style.transitionProperty = "all";
+            displaceIcon.style.transitionDuration = "0.4s";
+            displaceIcon.style.right = 1060 + "px";#}
+        } else
+        {
+            ConfigurationAreaSize = "1";
+        }
+    }
+    
+</script>

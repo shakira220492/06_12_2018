@@ -1,0 +1,4 @@
+get_datamining_songs_home_form:
+    path:     /getDataminingSongsHome
+    defaults: { _controller: Profile2Bundle:Default:getDataminingSongsHome }
+    methods:  POST

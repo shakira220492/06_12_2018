@@ -1,0 +1,70 @@
+<div id='overIconButton' class='animatedButton'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 60px;
+     z-index: 3;">
+    <img style='
+         width:30px; 
+         height:30px; 
+         opacity: 0.9;
+         z-index: 1;' 
+         src="files/images/icons/configuration/over.png" alt="Mountain View">
+</div>
+
+<script>
+    var overIconButton = document.getElementById('overIconButton');
+    overIconButton.addEventListener("click", showOverArea, false);
+    
+    {#window.onload = loadDisplaceIcon();#}
+    window.onload = loadOverAreafunctions();
+    
+{#    function loadDisplaceIcon()
+    {
+        document.getElementById("displaceIcon").style.right = 670+"px";
+    }#}
+    
+    function loadOverAreafunctions()
+    {
+        document.getElementById('presentationArea').style.transitionProperty = "all";
+        document.getElementById('presentationArea').style.transitionDuration = 0.5 + "s";
+        document.getElementById('presentationArea').style.width = $(window).width() - 180 + "px";
+
+        document.getElementById('playBanner').style.transitionProperty = "all";
+        document.getElementById('playBanner').style.transitionDuration = 0.5 + "s";
+        document.getElementById('playBanner').style.width = $(window).width() - 180 + "px";
+
+        size = "3";        
+    }
+    
+    function showOverArea(e)
+    {
+        document.getElementById('presentationArea').style.transitionProperty = "all";
+        document.getElementById('presentationArea').style.transitionDuration = 0.5 + "s";
+        if (size === "1")
+        {
+            document.getElementById('presentationArea').style.width = 100 + "%";
+            size = "2";
+        } else if (size === "2")
+        {
+            document.getElementById('presentationArea').style.width = $(window).width() - 180 + "px";
+            size = "3";
+        } else if (size === "3")
+        {
+            document.getElementById('presentationArea').style.width = $(window).width() - sessionArea_left + "px";
+            size = "4";
+        } else if (size === "4")
+        {
+            document.getElementById('presentationArea').style.width = $(window).width() - configurationArea_left + "px";
+            size = "5";
+        } else if (size === "5")
+        {
+            document.getElementById('presentationArea').style.width = $(window).width() - sessionArea_left + "px";
+            size = "6";
+        } else if (size === "6")
+        {
+            document.getElementById('presentationArea').style.width = $(window).width() - 180 + "px";
+            size = "1";
+        }
+    }
+</script>

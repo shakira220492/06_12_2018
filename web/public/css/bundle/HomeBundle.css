@@ -1,0 +1,12 @@
+div#invisibleLayer {
+     position: absolute;
+     opacity: 0.3;
+     z-index: 2;
+     background-color: gray;
+     top: 0px;
+     bottom: 0px;
+     right: 0px;
+     left: 0px;
+     transition-property: all;
+     transition-duration: 0.9s;
+}

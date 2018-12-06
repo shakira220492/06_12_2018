@@ -1,0 +1,107 @@
+/*logInUser.html.twig */
+#logIn
+{
+    position: absolute; 
+    top: 0px; 
+    right: 0px; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 3;
+}
+
+#logOut
+{
+    position: absolute; 
+    top: 0px; 
+    right: 0px; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 3;
+}
+
+#user_name
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#user_password
+{
+    position: absolute;
+    top: 40px;
+    left: 10px;
+}
+
+#btnLogIn
+{
+    position: absolute;
+    height: 25px;
+    width: 60px;
+    top: 70px;
+    left: 10px;
+    display: block;
+    background-color: white;
+}
+
+#btnLogIn2
+{
+    position: absolute;
+    height: 25px;
+    width: 60px;
+    top: 70px;
+    left: 10px;
+    display: none;
+    background-color: white;
+}
+
+#btnSignUp
+{
+    position: absolute;
+    height: 25px;
+    width: 60px;
+    top: 70px;
+    left: 80px;
+    z-index: 3;
+    display: block;
+    background-color: white;
+}
+
+
+/*logOutUser.html.twig */
+
+#btnLogOut {
+    position: absolute;
+    height: 25px;
+    width: 65px;
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+    background-color: white;
+}
+
+#sessionAreaBgColor {
+    position: absolute;
+    background-color: gray;
+    opacity: 0.2;
+    width: 100%;
+    height: 100%;
+}
+
+#uploadVideoIconButton {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 60px;
+    right: 0px;
+    z-index: 1;
+}
+
+#videoIconButton {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 30px;
+    right: 0px;
+    z-index: 1;
+}

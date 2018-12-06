@@ -1,0 +1,232 @@
+{{ form_start(get_user_specific_information_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-user-specific-information-ajax'|default('form')} }) }}
+{{ form_end(get_user_specific_information_form_ajax) }}
+<style>
+
+    #userInformation {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        left: 0px;
+        height: 120px;
+        display: block;
+        font-size: smaller;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        color: white;
+    }
+    
+    #editLyricsIconButton {
+        position: absolute;
+        top: 0px;
+        right: 90px;
+    }
+    
+    #uploadVideoIconButton {
+        position: absolute;
+        top: 0px;
+        right: 60px;
+    }
+    
+    #dataminingButton {
+        position: absolute;
+        top: 0px;
+        right: 30px;
+    }
+    
+    #historyButton {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+</style>
+<div id="userInformation">
+    <div id="name_profileButton" class="animatedButton">
+    </div>
+
+    <div id="playlist_profileButton" class="animatedButton">
+    </div>
+    
+    <div id="dataminingButton" class="animatedButton">
+        <img class='shortIcon' 
+        src="files/images/icons/configuration/datamining.png" alt="Mountain View">
+    </div>
+    
+    <div id="historyButton" class="animatedButton">
+        <img class='shortIcon' 
+        src="files/images/icons/configuration/history.png" alt="Mountain View">
+    </div>
+        
+    <div id='uploadVideoIconButton' class='animatedButton'>
+        <img class='shortIcon' 
+             src="files/images/icons/presentation/uploadVideo.png" alt="Mountain View">
+    </div>
+    
+    <div id='editLyricsIconButton' class='animatedButton'>
+        <img class='shortIcon' 
+             src="files/images/icons/presentation/editLyrics.png" alt="Mountain View">
+    </div>
+</div>
+
+<div id="profile_content">
+    <div id="name_profile_content">
+        {{ include('@EditProfile/Default/index.html.twig') }}
+    </div>
+
+    <div id="dataminingSongs">
+        {{ include('@Datamining/Default/index.html.twig') }}
+    </div>
+
+    <div id="historySongs">
+        {{ include('@History/Default/index.html.twig') }}
+    </div>
+
+    <div id="specificListSongs">
+        {{ include('@List/Default/index.html.twig') }}
+    </div>
+
+    <div id='uploadVideoIconContent'>
+        {{ include('@UploadVideo/Default/index.html.twig') }}
+    </div>
+
+    <div id='editLyricsIconContent'>
+        Para activar esta opción debes ser el dueño de la cuenta del dueño del video.
+        (validar las condiciones)
+        {#{{ include('@EditLyrics/Default/index.html.twig') }}#}
+    </div>
+</div>
+
+<script>
+    function ProfileBundle()
+    {
+        getUserSpecificInformation();
+        
+        ListBundle();
+        EditProfileBundle();
+        DataminingBundle();
+        HistoryBundle();
+    }
+    
+    function getUserSpecificInformation()
+    {
+        var form = $('#get-user-specific-information-ajax');
+        var url = form.attr('action');
+
+        $.post(url, function (data)
+        {
+            var userId = data[0].userId;
+            var userName = data[0].userName;
+            var userFirstgivenname = data[0].userFirstgivenname;
+            var userSecondgivenname = data[0].userSecondgivenname;
+            var userFirstfamilyname = data[0].userFirstfamilyname;
+            var userSecondfamilyname = data[0].userSecondfamilyname;
+            var userEmail = data[0].userEmail;
+            var userPassword = data[0].userPassword;
+            var userBiography = data[0].userBiography;
+            var amountFollowers = data[0].amountFollowers;
+            var amountInfluencers = data[0].amountInfluencers;
+            var amountVideos = data[0].amountVideos;
+            var amountSpecificLists = data[0].amountSpecificLists;
+            
+            var name_profileButton = document.getElementById("name_profileButton");
+            var playlist_profileButton = document.getElementById("playlist_profileButton");
+          
+            name_profileButton.innerHTML = userFirstgivenname + " " + userSecondgivenname + " " + userFirstfamilyname + " " + userSecondfamilyname; 
+            playlist_profileButton.innerHTML = "LISTS: "+amountSpecificLists; 
+            
+        }).fail(function () {
+            alert('ERROR... get-user-specific-information-ajax');
+        });
+    }
+</script>
+    
+<script>
+    var name_profileButton = document.getElementById("name_profileButton");
+    name_profileButton.addEventListener("click", drawInfoProfile, false);
+    
+    var playlist_profileButton = document.getElementById("playlist_profileButton");
+    playlist_profileButton.addEventListener("click", drawSpecificlistProfile, false);
+    
+    var dataminingButton = document.getElementById("dataminingButton");
+    dataminingButton.addEventListener("click", drawDataminingSongs, false);
+    
+    var historyButton = document.getElementById("historyButton");
+    historyButton.addEventListener("click", drawHistorySongs, false);
+    
+    var uploadVideoIconButton = document.getElementById('uploadVideoIconButton');
+    uploadVideoIconButton.addEventListener("click", drawUploadIconContent, false);
+    
+    var editLyricsIconButton = document.getElementById('editLyricsIconButton');
+    editLyricsIconButton.addEventListener("click", drawEditLyricsIconContent, false);
+    
+    function clearOptionsFromProfile()
+    {
+        var name_profile_content = document.getElementById("name_profile_content");
+        var dataminingSongs = document.getElementById("dataminingSongs");
+        var historySongs = document.getElementById("historySongs");
+        var specificListSongs = document.getElementById("specificListSongs");
+        var uploadVideoIconContent = document.getElementById("uploadVideoIconContent");
+        var editLyricsIconContent = document.getElementById("editLyricsIconContent");
+        
+        name_profile_content.style.top = "-1000px";
+        dataminingSongs.style.top = "-1000px";
+        historySongs.style.top = "-1000px";
+        specificListSongs.style.top = "-1000px";
+        uploadVideoIconContent.style.top = "-1000px";
+        editLyricsIconContent.style.top = "-1000px";
+        
+        name_profile_content.style.bottom = "1000px";
+        dataminingSongs.style.bottom = "1000px";
+        historySongs.style.bottom = "1000px";
+        specificListSongs.style.bottom = "1000px";
+        uploadVideoIconContent.style.bottom = "1000px";
+        editLyricsIconContent.style.bottom = "1000px";
+    }
+
+    function drawInfoProfile()
+    {
+        clearOptionsFromProfile();
+        var name_profile_content = document.getElementById("name_profile_content");
+        name_profile_content.style.top = "0px";
+        name_profile_content.style.bottom = "0px";
+    }
+
+    function drawSpecificlistProfile()
+    {
+        clearOptionsFromProfile();
+        var specificListSongs = document.getElementById("specificListSongs");
+        specificListSongs.style.top = "0px";
+        specificListSongs.style.bottom = "0px";
+    }
+
+    function drawDataminingSongs()
+    {
+        clearOptionsFromProfile();
+        var dataminingSongs = document.getElementById("dataminingSongs");
+        dataminingSongs.style.top = "0px";
+        dataminingSongs.style.bottom = "0px";
+    }
+    
+    function drawHistorySongs()
+    {
+        clearOptionsFromProfile();
+        var historySongs = document.getElementById("historySongs");
+        historySongs.style.top = "0px";
+        historySongs.style.bottom = "0px";
+    }
+    
+    function drawUploadIconContent()
+    {
+        clearOptionsFromProfile();
+        var uploadVideoIconContent = document.getElementById("uploadVideoIconContent");
+        uploadVideoIconContent.style.top = "0px";
+        uploadVideoIconContent.style.bottom = "0px";
+    }
+    
+    function drawEditLyricsIconContent()
+    {
+        clearOptionsFromProfile();
+        var editLyricsIconContent = document.getElementById("editLyricsIconContent");
+        editLyricsIconContent.style.top = "0px";
+        editLyricsIconContent.style.bottom = "0px";
+    }
+</script>

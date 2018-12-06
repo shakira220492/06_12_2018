@@ -1,0 +1,3 @@
+displace_homepage:
+    path:     /displaceBundle
+    defaults: { _controller: DisplaceBundle:Default:index }

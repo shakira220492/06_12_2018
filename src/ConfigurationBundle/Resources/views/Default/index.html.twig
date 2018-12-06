@@ -1,0 +1,111 @@
+<style>
+    #songIconButton {
+        cursor: pointer;
+        color: white;
+        font-size: large;
+        z-index: 11;
+        transition-property: all;
+        transition-duration: 1s;
+        position: relative;
+        opacity: 0.8;
+        white-space: nowrap;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 10px #1ab7ea;
+    }
+    
+    #artistIconButton {
+        cursor: pointer;
+        color: white;
+        font-size: small;
+        z-index: 11;
+        transition-property: all;
+        transition-duration: 1s;
+        position: relative;
+        opacity: 0.5;
+        white-space: nowrap;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 10px #1ab7ea;
+    }
+
+    #songIconButton:hover, #artistIconButton:hover {
+        color: #1ab7ea;
+        text-shadow: 0px 0px 10px white;
+    }
+</style>
+
+<div id='songIconButton' class="animatedButton">
+    Amantes {#1234567890 23456789 34567890 4567890 567890 67890 7890#}
+</div>
+
+<div id='artistIconButton' class="animatedButton">
+    Greicy ft Mike Bahía
+</div>
+
+<div id="configurationArea_1">
+    <div id="configurationArea_1BgColor">
+    </div>
+    <div id="configurationArea_1Content">
+
+        <div id='songIconContent'>
+            {{ include('@Song/Default/index.html.twig') }}
+        </div>
+
+        <div id='artistIconContent'>
+            {{ include('@Artist/Default/index.html.twig') }}
+        </div>
+
+    </div>
+</div>
+
+<script>
+    window.onload = loadConfigurationArea();
+
+    function loadConfigurationArea()
+    {
+        var songIconContent = document.getElementById("songIconContent");
+        var artistIconContent = document.getElementById("artistIconContent");
+        
+        songIconContent.style.height = "100%"; // configurationArea_1 (by default)
+        artistIconContent.style.height = "0%"; // configurationArea_1
+        
+    }
+    
+    var artistIconButton = document.getElementById('artistIconButton');
+    artistIconButton.addEventListener("click", show_artistIconContent, false);
+    
+    var songIconButton = document.getElementById('songIconButton');
+    songIconButton.addEventListener("click", show_songIconContent, false);
+    
+    function show_artistIconContent()
+    {
+        var artistIconContent = document.getElementById('artistIconContent');
+        var songIconContent = document.getElementById('songIconContent');
+        
+        if (artistIconContent.style.height === "0%")
+        {
+            artistIconContent.style.height = "100%";
+            songIconContent.style.height = "0%";
+        } else
+        {
+            artistIconContent.style.height = "0%";
+            songIconContent.style.height = "100%";
+        }
+    }
+    
+    function show_songIconContent()
+    {
+        var artistIconContent = document.getElementById('artistIconContent');
+        var songIconContent = document.getElementById('songIconContent');
+        
+        if (songIconContent.style.height === "0%")
+        {
+            artistIconContent.style.height = "0%";
+            songIconContent.style.height = "100%";
+        } else
+        {
+            artistIconContent.style.height = "100%";
+            songIconContent.style.height = "0%";
+        }
+    }
+    
+</script>

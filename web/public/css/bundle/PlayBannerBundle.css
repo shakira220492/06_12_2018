@@ -1,0 +1,76 @@
+#volumeTool
+{
+    position: absolute;
+    width: 170px;
+    height: 30px;
+    top: 0px;
+    left: 30px;
+}
+
+#volumeIconButton
+{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+#volumeIconButton_image
+{
+    width:30px; 
+    height:30px; 
+    opacity: 0.9;
+    z-index: 1;
+}
+
+#volumeBar
+{
+    background-color: #1ab7ea;
+    position: absolute;
+    width: 0px;
+    height: 5px;
+    top: 13px;
+    left: 30px;
+    opacity: 1;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+#volumeController
+{
+    background-color: black;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    top: 0px;
+    left: 0px;
+}
+
+
+#playBannerProgress
+{
+    background-color: #1ab7ea;
+    position: absolute;
+    height: 5px;
+    width: 100%; 
+    bottom: 40px;
+    left: 0px;
+    z-index: 5;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+#playBannerProgress_background
+{
+    background-color: white;
+    position: absolute;
+    height: 5px;
+    width: 100%; 
+    bottom: 40px;
+    left: 0px;
+    z-index: 4;
+}

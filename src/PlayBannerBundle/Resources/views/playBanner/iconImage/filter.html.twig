@@ -1,0 +1,41 @@
+<div id='filterIconButton' class='animatedButton'
+     style="position: absolute;
+     height: 30px;
+     width: 30px;
+     top: 0px; 
+     left: 180px;
+     z-index: 1;">
+    <img style='
+         width:30px; 
+         height:30px; 
+         opacity: 0.9;
+         z-index: 1;' 
+         src="files/images/icons/playBanner/filter.png" alt="Mountain View">
+</div>
+
+<script>
+    var filterIconButton = document.getElementById("filterIconButton");
+    
+    filterIconButton.addEventListener("click", function () {
+        filterIconFunction();
+    });
+    
+    function filterIconFunction()
+    {
+        var invisibleLayer = document.getElementById("invisibleLayer");
+        
+        if (invisibleLayer_status === "1")
+        {
+            invisibleLayer.style.backgroundColor = "white";
+            invisibleLayer_status = "2";
+        } else if (invisibleLayer_status === "2")
+        {
+            invisibleLayer.style.backgroundColor = "#ccc";
+            invisibleLayer_status = "3";
+        } else if (invisibleLayer_status === "3")
+        {
+            invisibleLayer.style.backgroundColor = "gray";
+            invisibleLayer_status = "1";
+        }
+    }
+</script>

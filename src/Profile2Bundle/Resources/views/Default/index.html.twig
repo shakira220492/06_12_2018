@@ -1,0 +1,253 @@
+{{ form_start(get_datamining_songs_home_form_ajax, { 'attr' : {'novalidate': 'novalidate', 'role' : 'form', 'id': 'get-datamining-songs-home-ajax'|default('form')} }) }}
+{{ form_end(get_datamining_songs_home_form_ajax) }}
+<style>
+    .videoPortrait_dataminingSongs_
+    {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        overflow:hidden;
+        height:120px;
+        width:170px;
+        text-align:center;
+        background-color: white;
+        opacity: 1;
+        text-align: left;
+        transition-property: all;
+        transition-duration: 0.5s;
+    }
+
+    .videoContaint_dataminingSongs_
+    {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        opacity: 0;
+        text-align: left;
+        transition-property: all;
+        transition-duration: 0.5s;
+        height: 5px;
+        width: 100%;
+    }
+</style>
+
+<div id="dataminingSongs_profile2">
+</div>
+
+<script>
+    function Profile2Bundle()
+    {
+        getDataminingSongsHome();
+    }
+    
+    function getDataminingSongsHome()
+    {
+        var form = $('#get-datamining-songs-home-ajax');
+        var url = form.attr('action');
+
+{#        var dataminingSongs_profile2 = document.getElementById("dataminingSongs_profile2");
+        dataminingSongs_profile2.innerHTML = "";#}
+        
+        $.post(url, function (data)
+        {
+            var amountUsers = data[0][0].amountUsers;
+            for (i = 0; i < amountUsers; i++)
+            {
+                var amountVideos = data[i][0].amountVideos;
+                var userId = data[i][0].userId;
+                var userName = data[i][0].userName;
+                addUserList(userId, userName);
+                
+                for (j = 0; j < amountVideos; j++)
+                {
+                    var videoId = data[i][j].videoId;
+                    var videoName = data[i][j].videoName;
+                    var videoDescription = data[i][j].videoDescription;
+                    var videoImage = data[i][j].videoImage;
+                    var videoContent = data[i][j].videoContent;
+                    var videoUpdatedate = data[i][j].videoUpdatedate;
+                    var videoAmountViews = data[i][j].videoAmountViews;
+                    var videoAmountComments = data[i][j].videoAmountComments;
+                    var videoLikes = data[i][j].videoLikes;
+                    var videoDislikes = data[i][j].videoDislikes;
+                    var userId = data[i][j].userId;
+                    var userName = data[i][j].userName;
+                    var amountVideos = data[i][j].amountVideos;
+                    var amountUsers = data[i][j].amountUsers;
+
+{#                    alert(
+                        "videoId: "+videoId+
+                        "videoName: "+videoName+
+                        "videoDescription: "+videoDescription+
+                        "videoImage: "+videoImage+
+                        "videoContent: "+videoContent+
+                        "videoUpdatedate: "+videoUpdatedate+
+                        "videoAmountViews: "+videoAmountViews+
+                        "videoAmountComments: "+videoAmountComments+
+                        "videoLikes: "+videoLikes+
+                        "videoDislikes: "+videoDislikes+
+                        "userId: "+userId+
+                        "userName: "+userName+
+                        "amountVideos: "+amountVideos+
+                        "amountUsers: "+amountUsers
+                        );#}
+
+                    if (videoLikes === 0 && videoDislikes === 0)
+                    {
+                       if (videoLikes === 0)
+                       {
+                           videoLikes = 1;
+                       }
+                       if (videoDislikes === 0)
+                       {
+                           videoDislikes = 1;
+                       }
+                    }
+
+                    var percentageLikes = parseInt((100 * videoLikes)) / parseInt((videoLikes + videoDislikes));
+                    var percentageDislikes = parseInt((100 * videoDislikes)) / parseInt((videoLikes + videoDislikes));
+
+                    addVideoList(
+                        videoId, 
+                        videoName, 
+                        videoDescription, 
+                        videoImage, 
+                        videoContent, 
+                        videoUpdatedate, 
+                        videoAmountViews, 
+                        videoAmountComments, 
+                        videoLikes, 
+                        videoDislikes, 
+                        userId, 
+                        userName, 
+                        amountVideos, 
+                        amountUsers,
+                        percentageLikes,
+                        percentageDislikes
+                    );
+                
+                }
+            }
+        }).fail(function () {
+            alert('ERROR get-datamining-songs-home-ajax');
+        });
+    }
+    
+    function addUserList(userId, userName)
+    {
+        $("#dataminingSongs_profile2").append(
+            "<div id='userListByDatamining"+userId+"' class='userListByDatamining'>"+
+            "userId: " + userId + "userName: "+ userName+
+            "<br>"+
+            "</div>"
+        );
+    }
+    
+    function addVideoList(
+        videoId, 
+        videoName, 
+        videoDescription, 
+        videoImage, 
+        videoContent, 
+        videoUpdatedate, 
+        videoAmountViews, 
+        videoAmountComments, 
+        videoLikes, 
+        videoDislikes, 
+        userId, 
+        userName, 
+        amountVideos, 
+        amountUsers,
+        percentageLikes,
+        percentageDislikes)
+    {
+        $("#userListByDatamining"+userId+"").append(
+            "<div id='videoByUser_listByDatamining"+videoId+"' style='display:inline-block; position: relative; cursor: pointer;'"
+                +" data-id1='"+videoId+"'"
+                +" data-id2='"+videoName+"'"
+                +" data-id3='"+videoDescription+"'"
+                +" data-id4='"+videoImage+"'"
+                +" data-id5='"+videoContent+"'"
+                +" data-id6='"+videoUpdatedate+"'"
+                +" data-id7='"+videoAmountViews+"'"
+                +" data-id8='"+videoAmountComments+"'"
+                +" data-id9='"+videoLikes+"'"
+                +" data-id10='"+videoDislikes+"'"
+                +" data-id11='"+userId+"'"
+                +" data-id12='"+userName+"'"
+                +" data-id13='"+amountVideos+"'"
+                +" data-id14='"+percentageLikes+"'"
+                +" data-id15='"+percentageDislikes+"'"
+                +" >"
+                +"<table border='0' width='100%'>"
+                +"<tr height='120px'>"
+                    +"<td width='170px' height='100px'>"
+                        +"<div id='videoPortrait_dataminingSongs_"+videoId+"' class='videoPortrait_dataminingSongs_'>"
+                            +"<img style='"
+                            +"height:100%; cursor: pointer;"
+                            +"opacity: 0.9; "
+                            +"z-index: 1;' "
+                            +"src='files/"+videoImage+"' "
+                            +"alt='Mountain View'>"
+                        +"</div>"
+                        +"<div id='videoContaint_dataminingSongs_"+videoId+"' class='videoContaint_dataminingSongs_'>"
+                            +" <b>"+videoName+"</b><br>"
+                            +" "+userName+"<br>"
+                            +" "+videoUpdatedate+"<br>"
+                            +" "+videoAmountViews+" views<br>"
+                            +" "+videoAmountComments+" comments<br>"
+                            +" <div style='height: 5px; width: 100%;'>"
+                                +"<div style='display: inline-block; height: 5px; width: "+percentageLikes+"%; background-color: blue; '></div>"
+                                +"<div style='display: inline-block; height: 5px; width: "+percentageDislikes+"%; background-color: red; '></div>"
+                            +" </div>"
+                        +"</div>"
+                    +"</td>"
+                +"</tr>"
+                +"</table>"
+            +"</div>"
+        );
+
+        $('#videoByUser_listByDatamining'+videoId)
+        .mouseover(function () {
+            var videoId = $(this).data('id1');
+            document.getElementById("videoContaint_dataminingSongs_"+videoId).style.opacity = 1;
+        })
+        .click(function () {
+            var videoId = $(this).data('id1');
+            var videoName = $(this).data('id2');
+            var videoDescription = $(this).data('id3');
+            var videoImage = $(this).data('id4');
+            var videoContent = $(this).data('id5');
+            var videoUpdatedate = $(this).data('id6');
+            var videoAmountViews = $(this).data('id7');
+            var videoAmountComments = $(this).data('id8');
+            var videoLikes = $(this).data('id9');
+            var videoDislikes = $(this).data('id10');
+            var userId = $(this).data('id11');
+            var userName = $(this).data('id12');
+            var amountVideos = $(this).data('id13');
+            var percentageLikes = $(this).data('id14');
+            var percentageDislikes = $(this).data('id15');
+
+            showVideo(
+                videoId,
+                videoName,
+                videoDescription,
+                videoImage,
+                videoContent,
+                videoUpdatedate,
+                videoAmountViews,
+                videoAmountComments,
+                videoLikes,
+                videoDislikes,
+                userName
+            );
+
+        })
+        .mouseout(function () {
+            var videoId = $(this).data('id1');
+            document.getElementById("videoContaint_dataminingSongs_"+videoId).style.opacity = 0;
+        });
+    }
+    
+</script>
