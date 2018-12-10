@@ -642,7 +642,7 @@
                         "height:100%;"+
                         "opacity: 0.9; "+
                         "z-index: 1;' "+
-                        "src='"+videoImage+"' "+
+                        "src='files/"+videoImage+"' "+
                         "alt='Mountain View'>"+
                     "</div>"+
                 
@@ -677,7 +677,7 @@
                     "type='text' "+
                     "id='newKeywordToTheVideo' style='color: gray;'"+
                     "name='newKeyword' "+
-                    "size='10'/> &nbsp"+
+                    "size='10' onpaste='return false'/> &nbsp"+
                     
                     "<div class='basicButton' onclick='saveVideoKeywords("+videoId+");' >"+
                         "+"+
@@ -724,6 +724,12 @@
         "</form>"+
         
         "</center>";
+
+        $('#newKeywordToTheVideo')
+        .keypress(function (e) {
+            return solo_letras_numeros(e);
+        });
+    
                 
         $("#portrait_editVideoProperties").change(function () {
             var reader = new FileReader();

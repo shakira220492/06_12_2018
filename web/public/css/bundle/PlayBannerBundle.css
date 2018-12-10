@@ -1,10 +1,10 @@
 #volumeTool
 {
     position: absolute;
-    width: 170px;
+    width: 110px;
     height: 30px;
-    top: 0px;
-    left: 30px;
+    top: 10px;
+    left: 60px;
 }
 
 #volumeIconButton
@@ -18,38 +18,6 @@
     transition-property: all;
     transition-duration: 1s;
 }
-
-#volumeIconButton_image
-{
-    width:30px; 
-    height:30px; 
-    opacity: 0.9;
-    z-index: 1;
-}
-
-#volumeBar
-{
-    background-color: #1ab7ea;
-    position: absolute;
-    width: 0px;
-    height: 5px;
-    top: 13px;
-    left: 30px;
-    opacity: 1;
-    transition-property: all;
-    transition-duration: 1s;
-}
-
-#volumeController
-{
-    background-color: black;
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    top: 0px;
-    left: 0px;
-}
-
 
 #playBannerProgress
 {
@@ -73,4 +41,90 @@
     bottom: 40px;
     left: 0px;
     z-index: 4;
+}
+
+.volume_level
+{
+    position: absolute;
+    background-color: #1ab7ea;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+#volume_0
+{
+    top: 0px;
+    left: 0px;
+    background-color: #1ab7ea;
+}
+
+#volume_10
+{
+    top: 0px;
+    left: 10px;
+    background-color: #1ab7ea;
+}
+
+#volume_20
+{
+    top: 0px;
+    left: 20px;
+    background-color: #1ab7ea;
+}
+
+#volume_30
+{
+    top: 0px;
+    left: 30px;
+    background-color: #1ab7ea;
+}
+
+#volume_40
+{
+    top: 0px;
+    left: 40px;
+    background-color: #1ab7ea;
+}
+
+#volume_50
+{
+    top: 0px;
+    left: 50px;
+    background-color: #1ab7ea;
+}
+
+#volume_60
+{
+    top: 0px;
+    left: 60px;
+    background-color: #1ab7ea;
+}
+
+#volume_70
+{
+    top: 0px;
+    left: 70px;
+    background-color: #1ab7ea;
+}
+
+#volume_80
+{
+    top: 0px;
+    left: 80px;
+    background-color: #1ab7ea;
+}
+
+#volume_90
+{
+    top: 0px;
+    left: 90px;
+    background-color: #1ab7ea;
+}
+
+#volume_100
+{
+    top: 0px;
+    left: 100px;
+    background-color: #1ab7ea;
 }

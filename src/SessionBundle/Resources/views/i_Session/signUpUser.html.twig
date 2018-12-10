@@ -50,7 +50,7 @@
                 "</td>"+
                 "<td>"+
                 
-                    "<input id='user_name_signUp' class='defaultInput'"+
+                    "<input id='user_name_signUp' onpaste='return false' class='defaultInput'"+
                     "type='text' "+
                     "name='user_name_signUp' "+
                     "size='19' "+
@@ -65,7 +65,7 @@
                 "</td>"+
                 "<td>"+
                 
-                    "<input id='user_firstGivenName' class='defaultInput'"+
+                    "<input id='user_firstGivenName' onpaste='return false' class='defaultInput'"+
                     "type='text' "+
                     "name='user_firstGivenName' "+
                     "size='19' "+
@@ -80,7 +80,7 @@
                 "</td>"+
                 "<td>"+
                 
-                    "<input id='user_secondGivenName' class='defaultInput'"+
+                    "<input id='user_secondGivenName' onpaste='return false' class='defaultInput'"+
                     "type='text' "+
                     "name='user_secondGivenName' "+
                     "size='19' "+
@@ -95,7 +95,7 @@
                 "</td>"+
                 "<td>"+
                 
-                    "<input id='user_firstFamilyName' class='defaultInput'"+
+                    "<input id='user_firstFamilyName' onpaste='return false' class='defaultInput'"+
                     "type='text' "+
                     "name='user_firstFamilyName' "+
                     "size='19' "+
@@ -110,7 +110,7 @@
                 "</td>"+
                 "<td>"+
                 
-                    "<input id='user_secondFamilyName' class='defaultInput'"+
+                    "<input id='user_secondFamilyName' onpaste='return false' class='defaultInput'"+
                     "type='text' "+
                     "name='user_secondFamilyName' "+
                     "size='19' "+
@@ -125,7 +125,7 @@
                 "</td>"+
                 "<td>"+
                 
-                    "<input id='user_email' class='defaultInput'"+
+                    "<input id='user_email' onpaste='return false' class='defaultInput'"+
                     "type='text' "+
                     "name='user_email' "+
                     "size='19' "+
@@ -140,8 +140,8 @@
                 "</td>"+
                 "<td>"+
                 
-                    "<input id='user_password_signUp' class='defaultInput'"+
-                    "type='text' "+
+                    "<input id='user_password_signUp' onpaste='return false' class='defaultInput'"+
+                    "type='password' "+
                     "name='user_password_signUp' "+
                     "size='19' "+
                     "placeholder='Password'/>"+
@@ -187,7 +187,7 @@
                     "color: gray;"+
                     "resize: none;"+
                     "overflow-y: scroll;' "+
-                    "></textarea>"+
+                    " class='defaultInput' ></textarea>"+
                     
                 "</td>"+
             "</tr>"+
@@ -249,6 +249,42 @@
             respectlyFormId.style.zIndex = "1";
             respectlyFormId.style.position = "absolute";
             respectlyFormId.innerHTML = "";
+        });
+        
+        
+        $('#user_name_signUp')
+        .keypress(function (e) {
+            return solo_letras_numeros(e);
+        });
+        
+        $('#user_firstGivenName')
+        .keypress(function (e) {
+            return solo_letras(e);
+        });
+        
+        $('#user_secondGivenName')
+        .keypress(function (e) {
+            return solo_letras(e);
+        });
+        
+        $('#user_firstFamilyName')
+        .keypress(function (e) {
+            return solo_letras(e);
+        });
+        
+        $('#user_secondFamilyName')
+        .keypress(function (e) {
+            return solo_letras(e);
+        });
+        
+        $('#user_country')
+        .keypress(function (e) {
+            return solo_letras(e);
+        });
+        
+        $('#user_city')
+        .keypress(function (e) {
+            return solo_letras(e);
         });
         
     }
@@ -380,4 +416,7 @@
             alert('ERROR... GET CITY');
         });
     }
+    
+    
+    
 </script>

@@ -596,14 +596,18 @@
                     "type='text' " +
                     "id='keyword" + amountKeywords + "' " +
                     "name='keyword" + amountKeywords + "' " +
-                    "{#size='10'#} {#readonly='readonly'#}/> " +
+                    "onpaste='return false' /> " +
                     "<div class='deleteKeyword' onclick='deleteKeyword(\"keywordEnvironment" + amountKeywords + "\");'> " +
                     "<center>X</center> " +
                     "</div> " +
                     "</div> "
                     );
+            
+            $('#keyword'+amountKeywords)
+            .keypress(function (e) {
+                return solo_letras_numeros(e);
+            });
         }
-    {#        console.log(amountKeywords + " - " + amountCurrentKeywords);#}
     }
 
     function deleteKeyword(id)

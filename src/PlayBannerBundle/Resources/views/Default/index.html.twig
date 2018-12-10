@@ -12,31 +12,42 @@
     width: 100%;
     height: 10px;
     justify-content: center;
-    display: flex;">
+    display: flex;
+    {#background-color: #247CC0;#}">
     
     <div
         style="
         position: absolute;
-        width: 180px;
-        height: 30px;">
-
-        {{ include('@PlayBanner/playBanner/iconImage/captions.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/currentTime.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/duration.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/playPause.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/totalScreen.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/volume.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/speed.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/filter.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/replay.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/next.html.twig') }}
-        {{ include('@PlayBanner/playBanner/iconImage/previous.html.twig') }}
-    
+        width: 500px;
+        height: 30px;
+        background-color: gray;">
+        
+        {#left: 0px#}
+        {{ include('@PlayBanner/playBanner/iconImage/previous.html.twig') }}{#width: 30px#}
+        {#left: 30px#}
+        {{ include('@PlayBanner/playBanner/iconImage/playPause.html.twig') }}{#width: 30px#}
+        {#left: 60px#}
+        {{ include('@PlayBanner/playBanner/iconImage/volume.html.twig') }}{#width: 110px#}
+        {#left: 170px#}
+        {{ include('@PlayBanner/playBanner/iconImage/captions.html.twig') }}{#width: 30px#}
+        {#left: 200px#}
+        {{ include('@PlayBanner/playBanner/iconImage/currentTime.html.twig') }}{#width: 40px#}
+        {#left: 240px#}
+        {{ include('@PlayBanner/playBanner/iconImage/duration.html.twig') }}{#width: 40px#}
+        {#left: 280px#}
+        {{ include('@PlayBanner/playBanner/iconImage/replay.html.twig') }}{#width: 30px#}
+        {#left: 310px#}
+        {{ include('@PlayBanner/playBanner/iconImage/totalScreen.html.twig') }}{#width: 30px#}
+        {#left: 340px#}
+        {{ include('@PlayBanner/playBanner/iconImage/speed.html.twig') }}{#width: 100px#}
+        {#left: 440px#}
+        {{ include('@PlayBanner/playBanner/iconImage/filter.html.twig') }}{#width: 30px#}
+        {#left: 470px#}
+        {{ include('@PlayBanner/playBanner/iconImage/next.html.twig') }}{#width: 30px#}
+        {#500px#}
     </div>
-    
 </div>
-        
-        
+    
 <script>
     
     var playBannerProgress_background = document.getElementById("playBannerProgress_background");

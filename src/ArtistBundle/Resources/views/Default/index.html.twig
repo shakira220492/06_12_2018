@@ -16,79 +16,170 @@
 {#        background-color: #1ab7ea;#}
         top: 0px;
         left: 0px;
-        width: 250px;
+        width: 180px;
         height: 120px;
         {#overflow-y: scroll;#}
+        z-index: 1;
         text-transform: uppercase;
         font-size: smaller;
+        transition-property: all;
+        transition-duration: 0.4s;
+    }
+    
+    #artistInformation_name {
+        position: absolute;
+        {#background-color: #DE3152;#}
+        top: 0px;
+        left: 0px;
+        width: 180px;
+        height: 15px;
+        z-index: 1;
+        transition-property: all;
+        transition-duration: 0.4s;
+    }
+    
+    #artistInformation_videos {
+        position: absolute;
+        {#background-color: #1ab7ea;#}
+        top: 15px;
+        left: 0px;
+        width: 180px;
+        height: 15px;
+        z-index: 1;
+        transition-property: all;
+        transition-duration: 0.4s;
+    }
+    
+    #artistInformation_lists {
+        position: absolute;
+        {#background-color: aquamarine;#}
+        top: 30px;
+        left: 0px;
+        width: 180px;
+        height: 15px;
+        z-index: 1;
+        transition-property: all;
+        transition-duration: 0.4s;
+    }
+    
+    #artistInformation_extraInfo {
+        position: absolute;
+        {#background-color: darkmagenta;#}
+        top: 45px;
+        left: 0px;
+        bottom: 0px;
+        width: 180px;
+        z-index: 1;
+        transition-property: all;
+        transition-duration: 0.4s;
     }
     
     #artistSpecificList {
         position: absolute;
-{#        background-color: #ed1f3c;#}
-        top: 0px;
-        left: 250px;
-        right: 0px;
-        height: 120px;
+        {#background-color: darkolivegreen;#}
+        top: 45px;
+        left: 0px;
+        width: 180px;
+        bottom: 0px;
         overflow-y: scroll; 
         overflow-x: hidden;
+        z-index: 2;
         text-transform: uppercase;
         font-size: smaller;
+        transition-property: all;
+        transition-duration: 0.4s;
     }
     
     #artistList {
         position: absolute;
-{#        background-color: #DE3152;#}
-        top: 130px;
+        {#background-color: #DE3152;#}
+        top: 45px;
         left: 0px;
-        right: 0px;
+        width: 180px;
         bottom: 0px;
+        z-index: 2;
+        transition-property: all;
+        transition-duration: 0.4s;
     }
+    
 </style>
 
-<div id="artistInformation">
-
-    <div id="artistName" class="animatedButton">
-        Artist Name
+<div id="artistInformation" class="animatedButton">
+    <div id="artistInformation_name" class="animatedButton">
     </div>
-
-    <div id="artistFollowers" class="animatedButton">
-        Artist Followers
+    <div id="artistInformation_videos" class="animatedButton">
     </div>
-
-    <div id="artistFollowing" class="animatedButton">
-        Artist Following
+    <div id="artistInformation_lists" class="animatedButton">
     </div>
+</div>
 
-    <div id="artistViews" class="animatedButton">
-        Artist Views
-    </div>
-
-    <div id="artistVideos" class="animatedButton">
-        Artist Videos
-    </div>
-
-    <div id="artistLists" class="animatedButton">
-        Artist Lists
-    </div>
-
-    <div id="artistEmail" class="animatedButton">
-        Artist Email
-    </div>
-
-    <div id="artistBiography" class="animatedButton">
-        Artist Biography
-    </div>
-    
+<div id="artistInformation_extraInfo">
 </div>
 
 <div id="artistSpecificList">
-    
 </div>
 
 <div id="artistList">
-    ARTIST LIST
 </div>
+
+<script>
+    $('#artistInformation_name').click(function () {
+        var artistSpecificList = document.getElementById("artistSpecificList");
+        var artistList = document.getElementById("artistList");
+        var artistInformation_extraInfo = document.getElementById("artistInformation_extraInfo");
+        
+        if (artistInformation_extraInfo.style.left === "-180px")
+        {
+            artistSpecificList.style.left = "-180px";
+            artistList.style.left = "-180px";
+            artistInformation_extraInfo.style.left = "0px";
+        } else
+        {
+            artistSpecificList.style.left = "-180px";
+            artistList.style.left = "-180px";
+            artistInformation_extraInfo.style.left = "-180px";
+        }
+        
+    });
+    
+    $('#artistInformation_videos').click(function () {
+        var artistSpecificList = document.getElementById("artistSpecificList");
+        var artistList = document.getElementById("artistList");
+        var artistInformation_extraInfo = document.getElementById("artistInformation_extraInfo");
+           
+        if (artistList.style.left === "-180px")
+        {
+            artistSpecificList.style.left = "-180px";
+            artistList.style.left = "0px";
+            artistInformation_extraInfo.style.left = "-180px";
+        } else 
+        {
+            artistSpecificList.style.left = "-180px";
+            artistList.style.left = "-180px";
+            artistInformation_extraInfo.style.left = "-180px";
+        }
+    });
+    
+    $('#artistInformation_lists').click(function () {
+        var artistSpecificList = document.getElementById("artistSpecificList");
+        var artistList = document.getElementById("artistList");
+        var artistInformation_extraInfo = document.getElementById("artistInformation_extraInfo");
+        
+        if (artistSpecificList.style.left === "-180px")
+        {
+            artistSpecificList.style.left = "0px";
+            artistList.style.left = "-180px";
+            artistInformation_extraInfo.style.left = "-180px";
+        } else 
+        {
+            artistSpecificList.style.left = "-180px";
+            artistList.style.left = "-180px";
+            artistInformation_extraInfo.style.left = "-180px";
+        }
+    });
+    
+</script>
+
 
 <script>
     window.onload = getArtistList();
@@ -227,23 +318,18 @@
             var amountVideos = data[0].amountVideos;
             var amountLists = data[0].amountLists;
             
-            var artistInformation = document.getElementById("artistInformation");
+            var artistInformation_name = document.getElementById("artistInformation_name");
+            var artistInformation_videos = document.getElementById("artistInformation_videos");
+            var artistInformation_lists = document.getElementById("artistInformation_lists");
+            var artistInformation_extraInfo = document.getElementById("artistInformation_extraInfo");
             
-            var artistName = document.getElementById("artistName");
-            var artistFollowers = document.getElementById("artistFollowers");
-            var artistFollowing = document.getElementById("artistFollowing");
-            var artistVideos = document.getElementById("artistVideos");
-            var artistLists = document.getElementById("artistLists");
-            var artistEmail = document.getElementById("artistEmail");
-            var artistBiography = document.getElementById("artistBiography");
-            
-            artistName.innerHTML = userFirstgivenname+" "+userSecondgivenname+" "+userFirstfamilyname+" "+userSecondfamilyname;
-            artistFollowers.innerHTML = "Followers: "+amountFollowers;
-            artistFollowing.innerHTML = "Following: "+amountInfluencers;
-            artistVideos.innerHTML = "Videos: "+amountVideos;
-            artistLists.innerHTML = "Lists: "+amountLists;
-            artistEmail.innerHTML = "Email: "+userEmail;
-            artistBiography.innerHTML = "Biography: "+userBiography;
+            artistInformation_name.innerHTML = userFirstgivenname+" "+userSecondgivenname+" "+userFirstfamilyname+" "+userSecondfamilyname+" ";
+            artistInformation_videos.innerHTML = "Videos: "+amountVideos+" ";
+            artistInformation_lists.innerHTML = "Lists: "+amountLists+" ";
+            artistInformation_extraInfo.innerHTML = "Followers: "+amountFollowers+"<br>"+
+            "Following: "+amountInfluencers+"<br>"+
+            "Email: "+userEmail+"<br>"+
+            "Biography: "+userBiography+" ";
             
         }).fail(function () {
             alert('ERROR... get-artist-list-ajax');
@@ -350,67 +436,6 @@
         document.getElementById(specificlistId).style.transitionProperty = "all";
         document.getElementById(specificlistId).style.transitionDuration = "0.4s";
         document.getElementById(specificlistId).style.opacity = 0.4;
-    }
-    
-</script>
-
-<script>    
-    var artistName = document.getElementById("artistName");
-    var artistFollowers = document.getElementById("artistFollowers");
-    var artistFollowing = document.getElementById("artistFollowing");
-    var artistViews = document.getElementById("artistViews");
-    var artistVideos = document.getElementById("artistVideos");
-    var artistLists = document.getElementById("artistLists");
-    var artistEmail = document.getElementById("artistEmail");
-    var artistBiography = document.getElementById("artistBiography");
-
-    artistName.addEventListener("click", show_artistNameContent, false);
-    artistFollowers.addEventListener("click", show_artistFollowersContent, false);
-    artistFollowing.addEventListener("click", show_artistFollowingContent, false);
-    artistViews.addEventListener("click", show_artistViewsContent, false);
-    artistVideos.addEventListener("click", show_artistVideosContent, false);
-    artistLists.addEventListener("click", show_artistListsContent, false);
-    artistEmail.addEventListener("click", show_artistEmailContent, false);
-    artistBiography.addEventListener("click", show_artistBiographyContent, false);
-    
-    function show_artistNameContent()
-    {
-        alert("show_artistNameContent");
-    }
-    
-    function show_artistFollowersContent()
-    {
-        alert("show_artistFollowersContent");
-    }
-    
-    function show_artistFollowingContent()
-    {
-        alert("show_artistFollowingContent");
-    }
-    
-    function show_artistViewsContent()
-    {
-        alert("show_artistViewsContent");
-    }
-    
-    function show_artistVideosContent()
-    {
-        getArtistList();
-    }
-    
-    function show_artistListsContent()
-    {
-        alert("show_artistListsContent");
-    }
-    
-    function show_artistEmailContent()
-    {
-        alert("show_artistEmailContent");
-    }
-    
-    function show_artistBiographyContent()
-    {
-        alert("show_artistBiographyContent");
     }
     
 </script>

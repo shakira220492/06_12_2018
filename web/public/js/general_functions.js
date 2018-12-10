@@ -258,3 +258,61 @@ function showMessage_EmergentWindow(message)
         });
         
 }
+
+function solo_letras(e)
+{
+    key = e.keyCode || e.which;
+    teclado = String.fromCharCode(key).toLowerCase(); // me convierte a letra el respectivo código: keyCode
+    letras = "abcdefghijklmnñopqrstuvwxyz";
+    especiales = "8-37-38-46-164"; 
+    // 8 retroceso, 
+    // 37 flecha para la izquierda, 
+    // 38 flecha para la derecha
+    // 46 tecla para suprimir
+    // 164 para la tecla ñ
+
+    teclado_especial = false;
+
+    for(var i in especiales){
+        if(key===especiales[i])
+        {
+            teclado_especial=true;
+            break;
+        }
+    }
+
+    // si "teclado" se encuentra en "letras" va a ser 1
+    // si "teclado" no se encuentra en "letras" se encuentra va a ser -1
+    if(letras.indexOf(teclado)===-1 && !teclado_especial){
+        return false; // no va a permitir el ingreso de ese valor
+    }
+}
+
+function solo_letras_numeros(e)
+{
+    key = e.keyCode || e.which;
+    teclado = String.fromCharCode(key).toLowerCase(); // me convierte a letra el respectivo código: keyCode
+    letras = "1234567890abcdefghijklmnñopqrstuvwxyz";
+    especiales = "8-37-38-46-164"; 
+    // 8 retroceso, 
+    // 37 flecha para la izquierda, 
+    // 38 flecha para la derecha
+    // 46 tecla para suprimir
+    // 164 para la tecla ñ
+
+    teclado_especial = false;
+
+    for(var i in especiales){
+        if(key===especiales[i])
+        {
+            teclado_especial=true;
+            break;
+        }
+    }
+
+    // si "teclado" se encuentra en "letras" va a ser 1
+    // si "teclado" no se encuentra en "letras" se encuentra va a ser -1
+    if(letras.indexOf(teclado)===-1 && !teclado_especial){
+        return false; // no va a permitir el ingreso de ese valor
+    }
+}
